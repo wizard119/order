@@ -1,4 +1,3 @@
-
 FROM ghcr.io/gkedu/openjdk:8u212-jdk
 COPY target/*SNAPSHOT.jar app.jar
 EXPOSE 8080
