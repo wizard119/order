@@ -1,5 +1,5 @@
 version: 0.2
-    
+ 
 env:
   variables:
     _PROJECT_NAME: "user15-order"
@@ -83,15 +83,11 @@ phases:
                           configMapKeyRef:       #configmap
                             name: bookstore-cm   #configmap
                             key: config_url      #configmap
-               #     args:           #liveness
-               #       - /bin/sh     #liveness
-               #       - -c          #liveness
-               #       - touch /tmp/test; sleep 30; rm -rf /tmp/test; sleep 600  #liveness   
                     resources:
-               #       limits:       #HPA
-               #         cpu: 500m   #HPA
-               #       requests:     #HPA
-               #         cpu: 200m   #HPA
+                      limits:       #HPA
+                        cpu: 500m   #HPA
+                      requests:     #HPA
+                        cpu: 200m   #HPA
                     readinessProbe:
                       httpGet:
                         path: /actuator/health
@@ -101,20 +97,14 @@ phases:
                       periodSeconds: 5
                       failureThreshold: 10
                     livenessProbe:
-                      httpGet:                         # 아래 liveness 테스트시 이부분 삭제
-                        path: /actuator/health         # 아래 liveness 테스트시 이부분 삭제
-                        port: 8080                     # 아래 liveness 테스트시 이부분 삭제
-                      initialDelaySeconds: 120         # 아래 liveness 테스트시 이부분 삭제
-                      timeoutSeconds: 2                # 아래 liveness 테스트시 이부분 삭제
-                      periodSeconds: 5                 # 아래 liveness 테스트시 이부분 삭제
-                      failureThreshold: 5              # 아래 liveness 테스트시 이부분 삭제
-                #      exec: #liveness
-                #        command: #liveness
-                #        - cat    #liveness
-                #        - /tmp/test  #liveness
-                #      initialDelaySeconds: 5  #liveness
-                #      periodSeconds: 5  #liveness
+                      httpGet:
+                        path: /actuator/health
+                        port: 8080
+                      initialDelaySeconds: 120
+                      timeoutSeconds: 2
+                      periodSeconds: 5
+                      failureThreshold: 5
           EOF
 #cache:
   #paths:
-    #- '/root/.m2/**/*'  
+    #- '/root/.m2/**/*'
