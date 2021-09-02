@@ -78,11 +78,11 @@ phases:
                     ports:
                       - containerPort: 8080
                     env:
-                     - name: bookstore-cm       #configmap
-                       valueFrom:               #configmap
-                         configMapKeyRef:       #configmap
-                           name: bookstore-cm   #configmap
-                           key: config_url      #configmap
+                      - name: bookstore-cm       #configmap
+                        valueFrom:               #configmap
+                          configMapKeyRef:       #configmap
+                            name: bookstore-cm   #configmap
+                            key: config_url      #configmap
                #     args:           #liveness
                #       - /bin/sh     #liveness
                #       - -c          #liveness
