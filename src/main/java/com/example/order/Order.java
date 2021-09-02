@@ -40,11 +40,11 @@ public class Order {
     //  payment.setStatus("Req/Res PAYMENT COMPLETED");
     //  payment.setAmt(this.getAmt());
         
-       // start payment
+     // start payment
      // PaymentService paymentService = OrderApplication.applicationContext.getBean(PaymentService.class);
      // paymentService.startPayment(payment);
-    }
-    // 2. req/res end
+     //}
+     // 2. req/res end
 
     @PreRemove
     public void onPreRemove(){
