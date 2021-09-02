@@ -1,5 +1,5 @@
 version: 0.2
- 
+    
 env:
   variables:
     _PROJECT_NAME: "user15-order"
@@ -76,35 +76,13 @@ phases:
                   - name: $_PROJECT_NAME
                     image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$_PROJECT_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
                     ports:
-                      - containerPort: 8080
-                    env:
-                      - name: port-list     #configmap
-                        valueFrom:          #configmap
-                          configMapKeyRef:  #configmap
-                            name: port-list #configmap
-                            key: port2      #configmap
+                      - containerPort: 8080 
                     resources:
                       limits:       #HPA
                         cpu: 500m   #HPA
                       requests:     #HPA
                         cpu: 200m   #HPA
-                    readinessProbe:
-                      httpGet:
-                        path: /actuator/health
-                        port: 8080
-                      initialDelaySeconds: 10
-                      timeoutSeconds: 2
-                      periodSeconds: 5
-                      failureThreshold: 10
-                    livenessProbe:
-                      httpGet:
-                        path: /actuator/health
-                        port: 8080
-                      initialDelaySeconds: 120
-                      timeoutSeconds: 2
-                      periodSeconds: 5
-                      failureThreshold: 5
           EOF
 #cache:
   #paths:
-    #- '/root/.m2/**/*' 
+    #- '/root/.m2/**/*'
