@@ -38,13 +38,13 @@ logging:
 server:
   port: 8081
   
-api:
-  url:
-    payment: http://localhost:8082
-
 #api:
 #  url:
-#    payment: ${configurl}    
+#    payment: http://localhost:8082
+
+api:
+  url:
+    payment: ${config_url}
 
 # feign:
 #   hystrix:
