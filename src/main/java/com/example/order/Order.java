@@ -23,26 +23,26 @@ public class Order {
     private int amt;
 
     // 1. pub/sub start
-    //@PostPersist
-    //public void onPostPersist(){
-    //    OrderPlaced orderPlaced = new OrderPlaced();
-    //    BeanUtils.copyProperties(this, orderPlaced);
-    //    orderPlaced.publishAfterCommit();
+    @PostPersist
+    public void onPostPersist(){
+        OrderPlaced orderPlaced = new OrderPlaced();
+        BeanUtils.copyProperties(this, orderPlaced);
+        orderPlaced.publishAfterCommit();
     }
     //1. pub/sub end
 
     // 2. req/res start
-    @PostPersist
-    public void callPaymentStart(){
-        Payment payment = new Payment();
-        payment.setOrderId(this.getId());
-        payment.setProductId(this.getProductId());        
-        payment.setStatus("Req/Res PAYMENT COMPLETED");
-        payment.setAmt(this.getAmt());
+    //@PostPersist
+    //public void callPaymentStart(){
+    //  Payment payment = new Payment();
+    //  payment.setOrderId(this.getId());
+    //  payment.setProductId(this.getProductId());        
+    //  payment.setStatus("Req/Res PAYMENT COMPLETED");
+    //  payment.setAmt(this.getAmt());
         
        // start payment
-        PaymentService paymentService = OrderApplication.applicationContext.getBean(PaymentService.class);
-        paymentService.startPayment(payment);
+     // PaymentService paymentService = OrderApplication.applicationContext.getBean(PaymentService.class);
+     // paymentService.startPayment(payment);
     }
     // 2. req/res end
 
