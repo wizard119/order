@@ -44,7 +44,7 @@ server:
 
 api:
   url:
-    payment: ${config_url}
+    payment: ${configurl}
 
 # feign:
 #   hystrix:
