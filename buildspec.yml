@@ -78,11 +78,11 @@ phases:
                     ports:
                       - containerPort: 8080
                     env:
-                      - name: port-list     #configmap
-                        valueFrom:          #configmap
-                          configMapKeyRef:  #configmap
-                            name: port-list #configmap
-                            key: port2      #configmap
+                      - name: bookstore-cm       #configmap
+                        valueFrom:               #configmap
+                          configMapKeyRef:       #configmap
+                            name: bookstore-cm   #configmap
+                            key: config_url      #configmap
                     resources:
                       limits:       #HPA
                         cpu: 500m   #HPA
